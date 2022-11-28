@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | Expenses chart component</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="wrapper">
+        <div class="header">
+            <div class="header__balance">
+                <p>My balance</p>
+                <h3>
+                    <span class="header__amount">$921.48</span>
+                </h3>
+            </div>
+            <div class="header__logo">
+                <img src="images/logo.svg" alt="card-logo">
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="body__title">
+                <p>
+                    Spending - Last 7 days
+                </p>
+            </div>
+            <div class="body__chart">
+            </div>
+
+            <hr class="body__spacer">
+
+            <div class="body__stats">
+                <div class="body__total">
+                    <p>
+                        Total this month
+                    </p>
+                    <span class="-amount">
+                        $478.33
+                    </span>
+                </div>
+                <div class="body__lastMonth">
+                    <p>
+                        +2.4% <br>
+                        from last month
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    const chart = document.querySelector('.body__chart')
+    const addElements = (items) => {
+        items.forEach(item => addElement(item))
+    }
+
+    const addElement = ({amount, day}) => {
+        const container = createContainer()
+        const bar = createBar(amount)
+        const label = createLabel(day)
+
+        container.appendChild(bar)
+        container.append(label)
+        chart.appendChild(container)
+    }
+
+    const createContainer = () => {
+        const container = document.createElement('div')
+        container.classList.add('chartItem')
+        return container
+    }
+    const createBar = (amount) => {
+        const bar = document.createElement('div')
+        bar.classList.add('chartItem__bar')
+        bar.style.height = `${amount * 3}px`;
+        return bar;
+    }
+
+    const createLabel = (day) => {
+        const label = document.createElement('span')
+        label.classList.add('chartItem__label')
+        label.innerHTML = day
+        return label;
+    }
+
+    fetch("./data.json")
+        .then((response) => response.json())
+        .then((json) => addElements(json));
+</script>
+
+<!--  <div class="attribution">-->
+<!--    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. -->
+<!--    Coded by <a href="#">Your Name Here</a>.-->
+<!--  </div>-->
+</body>
+</html>
