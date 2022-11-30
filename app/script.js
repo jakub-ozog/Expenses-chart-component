@@ -1,8 +1,5 @@
 const chart = document.querySelector('.body__chart');
 
-
-// console.log(chartItem)
-
 const addElements = (items) => {
     items.forEach(item => addElement(item))
 }
@@ -25,14 +22,15 @@ const createContainer = () => {
     return container
 }
 
-
 const createBar = (amount) => {
     const bar = document.createElement('div')
     bar.classList.add('chartItem__bar')
     bar.style.height = `${amount * 3}px`;
+
+    // console.log(bar)
+
     return bar;
 }
-
 
 const createLabel = (day) => {
     const label = document.createElement('span')
@@ -53,5 +51,3 @@ fetch("./data.json")
     .then((json) => addElements(json));
 
 
-
-// console.log(chartBar)
