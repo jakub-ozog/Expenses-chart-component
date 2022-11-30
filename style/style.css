@@ -95,6 +95,11 @@ body {
 .body__lastMonth {
   text-align: right;
 }
+@media (max-width: 400px) {
+  .body__lastMonth {
+    text-align: center;
+  }
+}
 .body__spacer {
   border: none;
   background-color: hsl(27deg, 66%, 92%);

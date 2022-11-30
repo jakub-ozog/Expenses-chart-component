@@ -111,6 +111,10 @@ body {
 
   &__lastMonth {
     text-align: right;
+
+    @media (max-width: 400px) {
+      text-align: center;
+    }
   }
 
   &__spacer {
