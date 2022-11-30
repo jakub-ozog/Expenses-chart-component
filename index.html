@@ -9,7 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script defer src="app/script.js"></script>
 </head>
+
 <body>
 
 <div class="container">
@@ -48,55 +50,14 @@
                 </div>
                 <div class="body__lastMonth">
                     <p>
-                        +2.4% <br>
+                        <strong>+2.4%</strong> <br>
                         from last month
                     </p>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
-<script>
-    const chart = document.querySelector('.body__chart')
-    const addElements = (items) => {
-        items.forEach(item => addElement(item))
-    }
-
-    const addElement = ({amount, day}) => {
-        const container = createContainer()
-        const bar = createBar(amount)
-        const label = createLabel(day)
-
-        container.appendChild(bar)
-        container.append(label)
-        chart.appendChild(container)
-    }
-
-    const createContainer = () => {
-        const container = document.createElement('div')
-        container.classList.add('chartItem')
-        return container
-    }
-    const createBar = (amount) => {
-        const bar = document.createElement('div')
-        bar.classList.add('chartItem__bar')
-        bar.style.height = `${amount * 3}px`;
-        return bar;
-    }
-
-    const createLabel = (day) => {
-        const label = document.createElement('span')
-        label.classList.add('chartItem__label')
-        label.innerHTML = day
-        return label;
-    }
-
-    fetch("./data.json")
-        .then((response) => response.json())
-        .then((json) => addElements(json));
-</script>
 
 <!--  <div class="attribution">-->
 <!--    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. -->
